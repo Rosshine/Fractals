@@ -20,13 +20,15 @@ class LSystems:
             for char in self.axiom:
                 new_string += self.rules.get(char, char)
             self.axiom = new_string
-
+        print(self.axiom)
     def draw_l_system(self):
+        stack = []
         t = turtle.Turtle()
-        turtle.reset()
-        turtle.hideturtle()
-        turtle.speed(0)
-
+        t.reset()
+        t.hideturtle()
+        t.speed(0)
+        t.clear()
+        # t.left(90)
         for char in self.axiom:
             if char == "F":
                 t.forward(self.distance)
@@ -34,10 +36,18 @@ class LSystems:
                 t.left(self.angle)
             elif char == "-":
                 t.right(self.angle)
+            elif char == "[":
+                stack.append((t.position(), t.heading()))
+            elif char == "]":
+                position, heading = stack.pop()
+                t.penup()
+                t.setposition(position)
+                t.setheading(heading)
+                t.pendown()
 
 
 class FractalModel(BaseModel):
-    angle: int
+    angle: float
     rules: dict
     axiom: str
     iterations: int

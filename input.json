@@ -1,0 +1,36 @@
+{"snowflake": {
+    "angle": 60,
+    "axiom": "F--F--F",
+    "rules": {"F":"F+F--F+F"},
+    "iterations": 2,
+    "distance":25
+},
+  "flower": {
+    "angle": 70,
+    "axiom": "F--F--F",
+    "rules": {"F":"F+F--F+F"},
+    "iterations": 4,
+    "distance":5
+},
+  "ferntree": {
+    "angle": 25,
+    "axiom": "F",
+    "rules": {"F":"FF [+F+FF] [-F-F] [+FF+F]"},
+    "iterations": 4,
+    "distance":5
+},
+  "kochcurve": {
+    "angle": 90,
+    "axiom": "F",
+    "rules": {"F":"F+F-F-F+F"},
+    "iterations": 4,
+    "distance":5
+},
+  "fernplant": {
+    "angle": 25,
+    "axiom": "F",
+    "rules": {"F":"FF [+F] [-FF] [-F+F]"},
+    "iterations": 3,
+    "distance":5
+}
+}

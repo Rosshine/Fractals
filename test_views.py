@@ -15,7 +15,6 @@ class TestLSystems(unittest.TestCase):
         l_system = LSystems(axiom, rules, angle, iterations, distance)
         l_system.apply_rule()
 
-        # The correct expected axiom after 2 iterations is:
         expected_axiom = "F+F-F-F+F+F+F-F-F+F-F+F-F-F+F-F+F-F-F+F+F+F-F-F+F"
         self.assertEqual(l_system.axiom, expected_axiom)
 
@@ -43,7 +42,7 @@ class TestFastAPI(unittest.TestCase):
 
     @patch.object(LSystems, 'draw_l_system', MagicMock())  # Mocking draw_l_system
     def test_generate_fractal(self):
-        # Define input parameters for testing
+        # input parameters for testing
         fractal_data = {
             "axiom": "F",
             "rules": {"F": "F+F-F-F+F"},
