@@ -5,10 +5,10 @@ path: C:\Python3123\python.exe;C:\Python3123\Scripts;
 2. Setup python virtual Environment
 Open cmd
 pip install virutalenv
-cd fractal_generator/
+cd fractals/
 virtualenv virtenvironment
 3. Activate virtual environment
-fractal_generator\venv\virtenvironment\\Scripts\activate
+fractals\venv\virtenvironment\\Scripts\activate
 4. Install the packages using the command,
 pip install -r requirements.txt
 5. Run the server using the command,
