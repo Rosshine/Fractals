@@ -4,13 +4,12 @@ After python installation, set path to Environment Variable:
 path: C:\Python3123\python.exe;C:\Python3123\Scripts;
 2. Setup python virtual Environment
 Open cmd
-pip install virutalenv
-cd fractals/
-virtualenv virtenvironment
+python3 -m pip install virutalenv
+virtualenv venv
 3. Activate virtual environment
-fractals\venv\virtenvironment\\Scripts\activate
+cd venv\\Scripts\activate
 4. Install the packages using the command,
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 5. Run the server using the command,
 uvicorn views:app --reload --port 8090
 6. Access the apis using,
