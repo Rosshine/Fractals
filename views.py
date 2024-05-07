@@ -1,5 +1,7 @@
+import os
 import turtle
 
+from PIL import Image, ImageGrab
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
@@ -25,6 +27,10 @@ class LSystems:
         stack = []
         t = turtle.Turtle()
         t.reset()
+        # screen_width = turtle.Screen().window_width()
+        # screen_height = turtle.Screen().window_height()
+        screen = turtle.Screen()
+        screen.setup(width=1.0, height=1.0)
         t.hideturtle()
         t.speed(0)
         t.clear()
@@ -45,6 +51,7 @@ class LSystems:
                 t.setheading(heading)
                 t.pendown()
 
+        return t
 
 class FractalModel(BaseModel):
     angle: float
@@ -66,8 +73,20 @@ async def generate_structures(item: FractalModel):
     l_system = LSystems(axiom, rules, angle, iterations, distance)
     l_system.apply_rule()
     l_system.draw_l_system()
+    screenshot = ImageGrab.grab()
+    width, height = screenshot.size
+    left = 50
+    top = 100
+    right = width
+    bottom = height - 200
+    im1 = screenshot.crop((left, top, right, bottom))
+    image_path = "{0}.png".format(axiom)
+    image_path = os.path.join(os.getcwd(), image_path)
+    im1.save(image_path)
+    # img = Image.open(f"{axiom}_fractal.eps", gs='path/to/gswin64c.exe')
 
-    return {"message": "Fractal generated successfully"}
+    # screenshot.show()
+    return {"message": "Fractal generated successfully", "image_path": image_path}
 
 
 async def validate_parameter(angle, axiom, distance, iterations, rules):
@@ -76,8 +95,8 @@ async def validate_parameter(angle, axiom, distance, iterations, rules):
     if axiom == "" or axiom is None:
         error_message += "Axiom\n "
         status = False
-    if not rules:
-        error_message += "Rules\n "
+    if not rules or any(char not in ['F','A', 'B', '+', '-'] for char in rules):
+        error_message += "Rules(Provide Valid Rules, Rules Accept only A, B, F, + and -)\n "
         status = False
     if angle == 0:
         error_message += "Angle (Provide valid number between -180 to 180, other than 0)\n "

@@ -75,7 +75,7 @@ class TestFastAPI(unittest.TestCase):
 
         # Check the response content
         expected_response = {
-            "detail": "Provide valid inputs for:\n Axiom\n Rules\n Angle (Provide valid number between -180 to 180, "
+            "detail": "Provide valid inputs for:\n Axiom\n Rules(Provide Valid Rules, Rules Accept only A, B, F, + and -)\n Angle (Provide valid number between -180 to 180, "
                       "other than 0)\n Iterations (Provide valid number > 0)\n Distance (Provide valid distance > "
                       "0)\n "}
         self.assertEqual(response.json(), expected_response)
@@ -136,7 +136,7 @@ class ValidateParam(unittest.TestCase):
         message, status = await validate_parameter(axiom, rules, angle, iterations, distance)
         self.assertEqual(status, True)
         expected_response = {
-            "detail": "Provide valid inputs for:\n Rules\n Angle (Provide valid number between -180 to 180, "
+            "detail": "Provide valid inputs for:\n Rules(Provide Valid Rules, Rules Accept only A, B, F, + and -)\n Angle (Provide valid number between -180 to 180, "
                       "other than 0)\n "}
         self.assertEqual(message, expected_response)
 
@@ -174,7 +174,7 @@ class ValidateParam(unittest.TestCase):
         message, status = await validate_parameter(axiom, rules, angle, iterations, distance)
         self.assertEqual(status, True)
         expected_response = {
-            "detail": "Provide valid inputs for:\n Rules\n "}
+            "detail": "Provide valid inputs for:\n Rules(Provide Valid Rules, Rules Accept only A, B, F, + and -)\n "}
         self.assertEqual(message, expected_response)
 
 

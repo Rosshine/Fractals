@@ -15,7 +15,8 @@ uvicorn views:app --reload --port 8090
 6. Access the apis using,
 http://localhost:8090/<endpointname>
 7. Run the unit tests using,
-python -m unittest test_views.py
+
+
 8. Run the command to see the coverage,
 coverage run -m unittest test_views.py
 coverage report -m views.py
